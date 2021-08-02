@@ -1,25 +1,61 @@
-import logo from './logo.svg';
+import React, { useState} from 'react';
 import './App.css';
+import Nav from './components/Nav.jsx';
+import Cards from './components/Cards.jsx';
 
-function App() {
+
+export default function App() {
+
+  const [cities, setCities] = useState([]);
+
+  function onSearch(ciudad) {
+    console.log("entre")
+    let apiKey= "19e390f4a1dfa7fe0c6034f22146e601";
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
+      .then(r => r.json())
+      .then((recurso) => {
+        if(recurso.main !== undefined){
+          const ciudad = {
+            min: Math.round(recurso.main.temp_min),
+            max: Math.round(recurso.main.temp_max),
+            img: recurso.weather[0].icon,
+            id: recurso.id,
+            wind: recurso.wind.speed,
+            temp: recurso.main.temp,
+            name: recurso.name,
+            weather: recurso.weather[0].main,
+            clouds: recurso.clouds.all,
+            latitud: recurso.coord.lat,
+            longitud: recurso.coord.lon
+          };
+          
+          if(!(cities.some(obj => obj.id === ciudad.id))){
+            setCities(oldCities => [...oldCities, ciudad]);
+          }else {
+            alert("Esta ciudad ya se encuentra en pantalla");
+          }
+            
+                  
+        } else {
+          alert("Ciudad no encontrada");
+        }
+      });
+    }
+
+    function onClose(id) {
+      setCities(oldCities => oldCities.filter(c => c.id !== id));
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Nav
+          onSearch={onSearch}
+        />
+        <Cards 
+          cities = {cities}
+          onClose={onClose}
+        />
     </div>
   );
 }
 
-export default App;
