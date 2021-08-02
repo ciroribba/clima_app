@@ -1,0 +1,13 @@
+input {
+    border: 2px solid rgb(140, 175, 11);
+    color:rgb(140, 175, 11);
+}
+input::placeholder, input[type ="text"]{
+    color: rgb(140, 175, 11);
+}
+input:focus{
+    outline: 3px solid transparent;
+}
+.fondito{
+    background-color: rgb(215, 241, 142);
+}
