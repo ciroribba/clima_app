@@ -2,6 +2,8 @@ import React, { useState} from 'react';
 import './App.css';
 import Nav from './components/Nav.jsx';
 import Cards from './components/Cards.jsx';
+import {API} from './components/enviroment.js';
+
 
 
 export default function App() {
@@ -9,8 +11,8 @@ export default function App() {
   const [cities, setCities] = useState([]);
 
   function onSearch(ciudad) {
-    console.log("entre")
-    let apiKey= "19e390f4a1dfa7fe0c6034f22146e601";
+    let apiKey=API;
+    console.log('api', apiKey)
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
       .then(r => r.json())
       .then((recurso) => {
