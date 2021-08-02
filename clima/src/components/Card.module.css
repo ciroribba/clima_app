@@ -13,21 +13,21 @@
   .cardHeader{
     background: rgb(223, 226, 37);            
     margin: -20px;
-    padding: 20px;
+    padding: 10px 10px 0px 10px;
     border-radius: 20px 20px 0px 0px;
-    height: 80px;
+    height: 60px;
     text-align: end;
   }
   .cardBody{
     background: rgb(233, 215, 53);
     margin: -20px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 00px 00px 20px 20px;
   }
   .cardFooter{
     background: rgb(189, 206, 39);
     margin: -20px;
-    padding: 20px;
+    padding: 0px;
     border-radius: 00px 00px 20px 20px;
     display: flex;
     justify-content: space-around;
@@ -50,5 +50,6 @@
   
   .txt{
     text-shadow: 1px 1px 5px #000000;
+    color: white;
   }
   
