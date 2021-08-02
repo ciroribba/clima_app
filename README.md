@@ -49,4 +49,5 @@ No es necesario volver a correr el proyecto cada vez que se realice un cambio si
 ...
 
 ```
-Deberias ver algo como lo siguiente: ![Alt](./img-screen/tarjetas-iconos.png)
+Puedes ver el demo --> [DEMO](https://climabyciro.netlify.app/)
+Deberias ver algo como lo siguiente: ![Imagen de app](https://github.com/ciroribba/clima_app/blob/main/clima.png)
